@@ -37,5 +37,5 @@ services:
     ports:
       - "1433:1433"
 networks:
-  rent-network:
+  solar-network:
 
