@@ -10,7 +10,7 @@ services:
      - db
     command: ["dotnet", "ef" , "database update"]
     ports:
-      - "8080:8080"
+      - "5240:5240"
     networks:
       - solar-network
 
@@ -27,7 +27,7 @@ services:
     depends_on:
       - solar_backend
     environment:
-      BACKEND_URL: 'http://solar_backend:8080'
+      BACKEND_URL: 'http://solar_backend:5240'
   db:
     image: mcr.microsoft.com/mssql/server
     container_name: db
