@@ -2,7 +2,7 @@ version: '3'
 
 services:
   solar_backend:
-    image: kc0d3/solarwatch/solar_backend:latest
+    image: kc0d3/solarwatch:solar_backend
     build:
       context: ./Backend/SolarWatch
     container_name: solar-backend
@@ -16,7 +16,7 @@ services:
 
   solar-frontend:
     container_name: solar-frontend
-    image: kc0d3/solarwatch/solar_frontend:latest
+    image: kc0d3/solarwatch:solar_frontend
     build:
       context: ./Frontend
       dockerfile: Dockerfile
@@ -29,7 +29,7 @@ services:
     environment:
       BACKEND_URL: 'http://solar_backend:5240'
   db:
-    image: kc0d3/SolarWatch/mcr.microsoft.com/mssql/server
+    image: kc0d3/solarsatch:mcr.microsoft.com/mssql/server
     container_name: db
     environment:
       - ACCEPT_EULA=y
