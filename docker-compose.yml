@@ -4,7 +4,7 @@ services:
   solar_backend:
     image: solar_backend
     build:
-      context: ./Backend/Solarwatch
+      context: ../Backend/Solarwatch
     container_name: solar-backend
     depends_on: 
      - db
@@ -18,7 +18,7 @@ services:
     container_name: solar-frontend
     image: solar_frontend
     build:
-      context: ./Frontend
+      context: ../Frontend
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
