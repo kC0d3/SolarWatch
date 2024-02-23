@@ -1,1 +1,40 @@
+version: '3'
 
+services:
+  solar_backend:
+    image: kc0d3/solarwatch:solar_backend
+    build:
+      context: ./Backend/SolarWatch
+    container_name: solar-backend
+    depends_on: 
+     - db
+    command: ["dotnet", "ef" , "database update"]
+    ports:
+      - "5240:5240"
+    networks:
+      - solar-network
+
+  solar-frontend:
+    container_name: solar-frontend
+    image: kc0d3/solarwatch:solar_frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - solar-network
+    depends_on:
+      - solar_backend
+    environment:
+      BACKEND_URL: 'http://solar_backend:5240'
+  db:
+    image: mcr.microsoft.com/mssql/server
+    container_name: db
+    environment:
+      - ACCEPT_EULA=y
+      - SA_PASSWORD=yourStrong(!)Password
+    ports:
+      - "1433:1433"
+networks:
+  solar-network:
