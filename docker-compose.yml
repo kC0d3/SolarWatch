@@ -4,7 +4,7 @@ services:
   solar_backend:
     image: solar_backend
     build:
-      context: ./Backend/Solarwatch
+      context: ./Backend/SolarWatch
     container_name: solar-backend
     depends_on: 
      - db
