@@ -29,7 +29,7 @@ services:
     environment:
       BACKEND_URL: 'http://solar_backend:5240'
   db:
-    image: kc0d3/solarsatch:mcr.microsoft.com/mssql/server
+    image: mcr.microsoft.com/mssql/server
     container_name: db
     environment:
       - ACCEPT_EULA=y
