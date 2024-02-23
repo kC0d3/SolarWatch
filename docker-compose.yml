@@ -2,7 +2,7 @@ version: '3'
 
 services:
   solar_backend:
-    image: kc0d3/solarwatch:solar_backend:latest
+    image: kc0d3/solarwatch/solar_backend:latest
     build:
       context: ./Backend/SolarWatch
     container_name: solar-backend
@@ -16,7 +16,7 @@ services:
 
   solar-frontend:
     container_name: solar-frontend
-    image: kc0d3/solarwatch:solar_frontend:latest
+    image: kc0d3/solarwatch/solar_frontend:latest
     build:
       context: ./Frontend
       dockerfile: Dockerfile
