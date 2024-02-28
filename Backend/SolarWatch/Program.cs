@@ -73,8 +73,6 @@ void AddServices()
     builder.Services.AddSingleton<IRolesService, RolesService>();
     builder.Services.AddScoped<IAuthService, AuthService>();
     builder.Services.AddScoped<ITokenService, TokenService>();
-    builder.Services.AddDataProtection()
-        .PersistKeysToFileSystem(new DirectoryInfo("/keys"));
 }
 
 void ConfigureSwagger()
