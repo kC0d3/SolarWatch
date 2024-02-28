@@ -1,7 +1,7 @@
 # Dockerfile
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
-ENV ASPNETCORE_URLS=http://+:5240
+ENV ASPNETCORE_URLS=http://+:5240;https://+5241
 
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
