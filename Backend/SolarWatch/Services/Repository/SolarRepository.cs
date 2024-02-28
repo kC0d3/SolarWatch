@@ -6,17 +6,16 @@ namespace SolarWatch.Services.Repository;
 
 public class SolarRepository : ISolarRepository
 {
-    private static string _connectionString = ConnectionString.GetTestConnectionString();
+    private readonly SolarWatchContext _dbContext;
 
-    private static readonly DbContextOptions<SolarWatchContext> _options =
-        new DbContextOptionsBuilder<SolarWatchContext>()
-            .UseSqlServer(_connectionString)
-            .Options;
+    public SolarRepository(SolarWatchContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
 
     public async Task<SolarDto?> GetSolarRespByDateAndIdAsync(DateTime date, int id)
     {
-        await using var dbContext = new SolarWatchContext(_options);
-        var solarData = dbContext.Solars.Include(s => s.City).FirstOrDefault(s => s.Date == date && s.CityId == id);
+        var solarData = _dbContext.Solars.Include(s => s.City).FirstOrDefault(s => s.Date == date && s.CityId == id);
         return new SolarDto
         {
             Id = solarData.Id,
@@ -38,34 +37,29 @@ public class SolarRepository : ISolarRepository
 
     public async Task<Solar> GetSolarByDateAndIdAsync(DateTime date, int id)
     {
-        await using var dbContext = new SolarWatchContext(_options);
-        return dbContext.Solars.Include(s => s.City).FirstOrDefault(s => s.Date == date && s.CityId == id);
+        return _dbContext.Solars.Include(s => s.City).FirstOrDefault(s => s.Date == date && s.CityId == id);
     }
 
     public IEnumerable<Solar> GetAll()
     {
-        using var dbContext = new SolarWatchContext(_options);
-        return dbContext.Solars.ToList();
+        return _dbContext.Solars.ToList();
     }
 
     public void Add(Solar solar)
     {
-        using var dbContext = new SolarWatchContext(_options);
-        dbContext.Add(solar);
-        dbContext.SaveChanges();
+        _dbContext.Add(solar);
+        _dbContext.SaveChanges();
     }
 
     public void Delete(Solar solar)
     {
-        using var dbContext = new SolarWatchContext(_options);
-        dbContext.Remove(solar);
-        dbContext.SaveChanges();
+        _dbContext.Remove(solar);
+        _dbContext.SaveChanges();
     }
 
     public void Update(Solar solar)
     {
-        using var dbContext = new SolarWatchContext(_options);
-        dbContext.Update(solar);
-        dbContext.SaveChanges();
+        _dbContext.Update(solar);
+        _dbContext.SaveChanges();
     }
 }
