@@ -10,11 +10,11 @@ RUN dotnet restore
 # Copy everything else and build
 COPY . ./
 RUN dotnet publish -c Release -o out
+RUN dotnet dev-certs https
+RUN dotnet dev-certs https --trust
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build-env /app/out .
-RUN dotnet dev-certs https
-RUN dotnet dev-certs https --trust
 ENTRYPOINT ["dotnet", "SolarWatch.dll"]
