@@ -26,7 +26,7 @@ public class CityController : ControllerBase
         _jsonProcessor = jsonProcessor;
     }
     
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("{city}")]
     public async Task<ActionResult<CityDto>> GetCityData([Required] string city)
     {
