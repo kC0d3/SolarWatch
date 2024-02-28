@@ -6,8 +6,6 @@ ENV ASPNETCORE_URLS=http://+:5240;https://+:5241
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
 RUN dotnet restore
-RUN dotnet dev-certs https
-RUN dotnet dev-certs https --trust
 
 # Copy everything else and build
 COPY . ./
@@ -17,4 +15,6 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build-env /app/out .
+RUN dotnet dev-certs https
+RUN dotnet dev-certs https --trust
 ENTRYPOINT ["dotnet", "SolarWatch.dll"]
