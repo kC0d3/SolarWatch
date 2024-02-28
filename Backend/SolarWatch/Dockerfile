@@ -6,6 +6,8 @@ ENV ASPNETCORE_URLS=http://+:5240;https://+:5241
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
 RUN dotnet restore
+RUN dotnet dev-certs https
+RUN dotnet dev-certs https --trust
 
 # Copy everything else and build
 COPY . ./
