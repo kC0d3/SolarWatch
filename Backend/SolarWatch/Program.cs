@@ -15,7 +15,7 @@ using SolarWatch.Services.Repository;
 using SolarWatch.Services.SolarDataProvider;
 using SolarWatch.Services.SolarService;
 
-var connectionString = ConnectionString.GetTestConnectionString();
+var connectionString = ConnectionString.GetConnectionString();
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -47,7 +47,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-await app.Services.InitializeTestDbAsync();
+await app.Services.InitializeDbAsync();
 var rolesService = app.Services.GetService<IRolesService>();
 rolesService.AddRoles(app);
 rolesService.AddAdmin(app);

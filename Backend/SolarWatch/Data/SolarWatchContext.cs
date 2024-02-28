@@ -11,10 +11,4 @@ public class SolarWatchContext : DbContext
 
     public DbSet<City> Cities { get; set; }
     public DbSet<Solar> Solars { get; set; }
-
-    /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(
-            "Server=localhost,1433;Database=SolarWatch;User Id=sa;Password=yourStrong(!)Password;Encrypt=false;");
-    }*/
 }
