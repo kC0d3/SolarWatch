@@ -34,7 +34,8 @@
 
 Make a web application which use external API-s to get weather information for the requested capitol city and date time.
 Save the data to database and based on the request choose the data source, if the data already in the data base provide
-the data from the database for the client, if the data not yet in the database, request from the external API and save to
+the data from the database for the client, if the data not yet in the database, request from the external API and save
+to
 the database.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -42,6 +43,7 @@ the database.
 ## Built With
 
 * [![.NET][.NET]][.NET-url]
+* ![MSSQL]
 * [![React][React.js]][React-url]
 * [![Vite][Vite]][Vite-url]
 * [![C#][C#]][C#-url]
@@ -61,6 +63,8 @@ the database.
 [.NET]: https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white
 
 [.NET-url]: https://learn.microsoft.com/hu-hu/dotnet/core/introduction
+
+[MSSQL]: https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white
 
 [Vite]: https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white
 
